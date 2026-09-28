@@ -1,0 +1,46 @@
+# FASTag Scam Detection Tool
+
+> **VITyarthi Project**
+> A Python-based project designed to identify potentially suspicious FASTag-related links and scam messages.
+
+## Problem
+
+FASTag users can become victims of fraudulent recharge links and scam messages. Scammers may use attractive cashback offers, urgent alerts, or misleading messages to convince users to click on unsafe links.
+
+## Solution
+
+This project is a Python-based tool designed to identify suspicious FASTag-related links and messages. It checks for common scam-related keywords and patterns to detect potentially fraudulent content.
+
+## Features
+
+* Checks whether a link may be unsafe
+* Detects scam-related keywords in messages
+* Displays the risk level as **Low, Medium, or High**
+* Provides useful safety tips to help users stay protected
+
+## Technologies Used
+
+* Python
+* Basic string operations
+* Conditional statements
+
+## How to Run
+
+1. Install Python on your system.
+2. Download or clone this project.
+3. Open the project folder.
+4. Run the following command:
+
+```bash
+python fastage.py
+```
+
+## Project Information
+
+**Project Type:** VITyarthi Project
+**Language:** Python
+**Developer:** Ratna Karva
+
+## GitHub
+
+[Visit my GitHub Profile](https://github.com/RatnaKarva)
