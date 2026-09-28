@@ -1,0 +1,102 @@
+# FASTag Scam Awareness & Detection Tool
+
+suspicious_keywords = [
+    "free", "cashback", "offer", "urgent", "click now",
+    "limited time", "win", "prize", "verify", "update",
+    "bank", "fastag", "recharge now"
+]
+
+suspicious_domains = [
+    "bit.ly", "tinyurl", "shorturl", "goo.gl"
+]
+
+
+def get_risk_level(score):
+    if score >= 3:
+        return "High Risk: This link/message may be a SCAM!"
+    if score == 2:
+        return "Medium Risk: Be careful before using this."
+    return "Low Risk: Looks relatively safe."
+
+
+def check_link():
+    link = input("\nEnter the link: ").lower()
+    score = 0
+
+    for domain in suspicious_domains:
+        if domain in link:
+            print("Suspicious shortened URL detected!")
+            score += 2
+
+    for word in suspicious_keywords:
+        if word in link:
+            score += 1
+
+    print("\n--- Result ---")
+    print(get_risk_level(score))
+
+
+def analyze_message():
+    message = input("\nPaste the message: ").lower()
+    found_words = [word for word in suspicious_keywords if word in message]
+    score = len(found_words)
+
+    print("\n--- Analysis ---")
+
+    if found_words:
+        print("Suspicious words found:", ", ".join(found_words))
+    else:
+        print("No suspicious keywords detected.")
+
+    print(get_risk_level(score).replace("link/message", "message"))
+
+
+def show_tips():
+    tips = [
+        "Never click on unknown recharge links.",
+        "Always use official apps/websites.",
+        "Avoid offers that sound too good to be true.",
+        "Do not share OTP or bank details.",
+        "Check URL carefully before payment.",
+        "Avoid shortened links (bit.ly, tinyurl).",
+        "Verify messages from official sources.",
+        "Use trusted payment platforms.",
+        "Don't panic if message says 'urgent'.",
+        "When in doubt, don't click!"
+    ]
+
+    print("\n--- Safety Tips ---")
+    for number, tip in enumerate(tips, 1):
+        print(f"{number}. {tip}")
+
+
+def main():
+    actions = {
+        "1": check_link,
+        "2": analyze_message,
+        "3": show_tips
+    }
+
+    while True:
+        print("\n===== FASTag Scam Detector =====")
+        print("1. Check a Link")
+        print("2. Analyze a Message")
+        print("3. Safety Tips")
+        print("4. Exit")
+
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == "4":
+            print("Exiting... Stay safe!")
+            break
+
+        action = actions.get(choice)
+
+        if action:
+            action()
+        else:
+            print("Invalid choice. Try again.")
+
+
+if __name__ == "__main__":
+    main()
